@@ -12,14 +12,13 @@
 #     - name: Print Goodbye
 #       run: echo 'Done ma bye'
 
-name: First Practical Example
+name: Deployment
 
 on: push                    ##triggered on a push
 
 jobs:
-  first_job:
+  installs:
     runs-on: ubuntu-latest    ##runner or os on github
-
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
@@ -30,4 +29,14 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Run build
-      run: npm run build  
+      run: npm run build
+    
+    - name: Copy folder content recursively to remote VPS
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: dev
+          remote: scp/directory
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+
