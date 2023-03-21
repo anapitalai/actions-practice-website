@@ -30,13 +30,18 @@ jobs:
       run: npm ci
     - name: Run build
       run: npm run build
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with: 
+        name: dist-web
+        path: dist
     
-    - name: Copy folder content recursively to remote VPS
-      uses: garygrossgarten/github-action-scp@release
-      with:
-          local: dist
-          remote: scp/directory
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
+    # - name: Copy folder content recursively to remote VPS
+    #   uses: garygrossgarten/github-action-scp@release
+    #   with:
+    #       local: dist
+    #       remote: scp/directory
+    #       host: ${{ secrets.HOST }}
+    #       username: ${{ secrets.SSH_USER }}
+    #       password: ${{ secrets.PASSWORD }}
 
