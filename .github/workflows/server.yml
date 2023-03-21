@@ -1,13 +1,33 @@
-name: First Workflow Name
+# name: First Workflow Name
 
-on: workflow_dispatch
+# on: workflow_dispatch
+
+# jobs:
+#   first_job:
+#     runs-on: ubuntu-latest
+
+#     steps: 
+#     - name: Print greeting
+#       run: echo 'Hello, this is the first step in the job first_job'
+#     - name: Print Goodbye
+#       run: echo 'Done ma bye'
+
+name: First Practical Example
+
+on: push                    ##triggered on a push
 
 jobs:
   first_job:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    ##runner or os on github
 
-    steps:
-    - name: Print greeting
-      run: echo 'Hello, this is the first step in the job first_job'
-    - name: Print Goodbye
-      run: echo 'Done ma bye'
+    steps: 
+    - name: Get code from local to gh runner
+      uses: actions/checkout@v3
+    - name: Install nodejs 18
+      uses: actions/setup-node@v3
+      with:                             ##configs for nodejs 
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+    - name: Run tests
+      run: npm -v  

@@ -12,3 +12,21 @@ jobs:
             run: echo 'bye ma ioko!!'
 
 
+
+###working one 
+name: First Workflow Name
+
+on: workflow_dispatch
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+
+    steps: 
+    - name: Print greeting
+      run: echo 'Hello, this is the first step in the job first_job'
+    - name: Print Goodbye
+      run: echo 'Done ma bye'
+
+
+
