@@ -5,6 +5,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:                                     ##the steps, 2 steps here
            - name: Print greeting                   ##name of step
-             run: echo 'This is cool!!!'             ##what needs to be run
+             run: echo "Cool stuff"            ##what needs to be run
                                                     # name: Print goodbye
                                                     # run: echo 'bye ma ioko!!'
