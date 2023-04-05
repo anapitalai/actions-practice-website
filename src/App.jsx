@@ -4,35 +4,27 @@ import viteLogo from '/vite.svg'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import './App.css'
+import 'aframe';
+import 'aframe-particle-system-component';
+import {Entity, Scene} from 'aframe-react';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <Header></Header>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      
+      <h1>Authentic Kid Skills Virtual Reality</h1>
+      <Scene>
+        <Entity geometry={{primitive: 'box'}} material={{color: 'red'}} position={{x: 0, y: 0, z: -5}}/>
+        <Entity particle-system={{preset: 'snow'}}/>
+        <Entity light={{type: 'point'}}/>
+        <Entity gltf-model={{src: 'virtualcity.gltf'}}/>
+        <Entity text={{value: 'Hello, WebVR!'}}/>
+      </Scene>
+
       </div>
-      <h1>Authentic Kid Skills</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-       Project for kids
-      </p>
-      <Footer></Footer>
-    </div>
+
   )
 }
 
